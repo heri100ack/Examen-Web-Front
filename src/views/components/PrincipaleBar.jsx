@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Sidebar({ user, onLogout }) {
+export default function PricipaleBar({ user, onLogout }) {
   return (
     <aside className="bg-dark text-white p-3 d-flex flex-column vh-100" style={{ width: '250px' }}>
       <div className="d-flex align-items-center gap-2 mb-4 px-2">
