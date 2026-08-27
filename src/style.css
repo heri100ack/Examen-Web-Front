@@ -1,0 +1,35 @@
+.sidebar {
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+  background-color: var(--dark-sidebar);
+}
+
+.sidebar .nav-link {
+  color: #94a3b8;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  color: #ffffff;
+  background-color: #334155;
+}
+
+.card {
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.form-check-label {
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.form-check-label:hover {
+  border-color: var(--primary-color) !important;
+  background-color: #f8fafc;
+}

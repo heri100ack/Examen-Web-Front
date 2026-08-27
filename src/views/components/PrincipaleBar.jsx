@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function PricipaleBar({ user, onLogout }) {
   return (
-    <aside className="bg-dark text-white p-3 d-flex flex-column vh-100" style={{ width: '250px' }}>
+    <aside className="sidebar bg-dark text-white p-3 d-flex flex-column vh-100" style={{ width: '250px' }}>
       <div className="d-flex align-items-center gap-2 mb-4 px-2">
         <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold brand-font" style={{ width: '38px', height: '38px' }}>
           E
