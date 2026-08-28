@@ -1,14 +1,19 @@
 import { useState } from 'react';
-import { AuthModel } from '../models/AuthModel';
+import axiosClient from '../api/axiosClient';
 
-export const AuthController = () => {
+const authApi = {
+  login: (credentials) => axiosClient.post('/auth/login', credentials),
+  getProfile: () => axiosClient.get('/auth/me'),
+};
+
+export const useAuth = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
   const [error, setError] = useState(null);
 
   const login = async (email, password) => {
     try {
       setError(null);
-      const res = await AuthModel.login({ email, password });
+      const res = await authApi.login({ email, password });
       const { token, user: userData } = res.data;
 
       localStorage.setItem('token', token);

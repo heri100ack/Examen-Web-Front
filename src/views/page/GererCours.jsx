@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useCourse } from '../../../controllers/useCourse';
+import { useCours } from '../../services/coursService';
 
 export default function GererCours() {
-  const { courses, createCourse } = useCourse();
+  const { courses, createCourse} = useCours();
   const [title, setTitle] = useState('');
 
   const handleSubmit = (e) => {

@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { AuthController } from './controllers/AuthController';
-import Navbar from './views/components/Navbar';
+import { AuthService } from './service/authService';
 import PrincipaleBar from './views/components/PrincipaleBar';
 
 import Login from './views/page/Login';
@@ -14,8 +13,18 @@ import GererCours from './views/page/GererCours';
 import GererExamen from './views/page/GererExamen';
 import PageErreur from './views/page/PageErreur';
 
+const ProtectedRoute = ({ user, role, children }) => {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  if (role && user.role !== role) {
+    return <Navigate to={user.role === 'admin' ? '/admin' : '/student'} replace />;
+  }
+  return children;
+};
+
 export default function App() {
-  const { user, login, logout, error } = AuthController();
+  const { user, login, logout, error } = AuthService();
 
   if (!user) {
     return (
@@ -44,24 +53,23 @@ export default function App() {
 
           <main className="container-fluid p-4 flex-grow-1">
             <Routes>
-              {user.role === 'student' && (
-                <>
-                  <Route path="/" element={<PageStudient />} />
-                  <Route path="/epreuve/:id" element={<PageEpreuve />} />
-                  <Route path="/resultats" element={<PageResultataStudent />} />
-                </>
-              )}
+              <Route path="/" element={<Navigate to={user.role === 'admin' ? '/admin' : '/student'} replace />} />
 
-              {user.role === 'admin' && (
-                <>
-                  <Route path="/" element={<Navigate to="/admin" replace />} />
-                  <Route path="/admin" element={<PageAdmin />} />
-                  <Route path="/admin/cours" element={<GererCours />} />
-                  <Route path="/admin/examens" element={<GererExamen />} />
-                </>
-              )}
+                {/* Espace admin protégé */}
+                <Route path="/admin" element={<ProtectedRoute role="admin"><PageAdmin /></ProtectedRoute>} />
+                <Route path="/admin/students" element={<ProtectedRoute role="admin"><GererStudents /></ProtectedRoute>} />
+                <Route path="/admin/courses" element={<ProtectedRoute role="admin"><GererCours /></ProtectedRoute>} />
+                <Route path="/admin/exams" element={<ProtectedRoute role="admin"><GererExamen /></ProtectedRoute>} />
+                <Route path="/admin/exams/:id/questions" element={<ProtectedRoute role="admin"><QuestionEditor /></ProtectedRoute>} />
+                <Route path="/admin/exams/:id/results" element={<ProtectedRoute role="admin"><PageResultats /></ProtectedRoute>} />
 
-              <Route path="*" element={<PageErreur />} />
+                {/* Espace étudiant protégé */}
+                <Route path="/student" element={<ProtectedRoute role="student"><PageStudent /></ProtectedRoute>} />
+                <Route path="/student/exams/:id" element={<ProtectedRoute role="student"><PageEpreuve /></ProtectedRoute>} />
+                <Route path="/student/exams/:id/result" element={<ProtectedRoute role="student"><PageResultataStudent /></ProtectedRoute>} />
+              <Route path="/student/results" element={<ProtectedRoute role="student"><PageResultataStudent /></ProtectedRoute>} />
+           
+            
             </Routes>
           </main>
         </div>

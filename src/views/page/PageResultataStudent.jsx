@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { SubmissionController } from '../../../controllers/SubmissionController';
+import { SubmissionModel } from '../../controllers/SubmissionController';
 
 export default function PageResultatStudent() {
-  const { results, fetchMyResults, loadingResults } = useSubmission();
+  const { results, fetchMyResults, loadingResults } = SubmissionModel();
 
   useEffect(() => {
     fetchMyResults();
