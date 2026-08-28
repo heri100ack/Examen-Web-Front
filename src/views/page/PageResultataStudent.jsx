@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { submissionController } from '../../../controllers/SubmissionController';
+import { SubmissionController } from '../../../controllers/SubmissionController';
 
 export default function PageResultatStudent() {
   const { results, fetchMyResults, loadingResults } = useSubmission();
