@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StudentModel } from '../models/Student';
 
-export const StudentController = () => {
+export const StudentModel = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

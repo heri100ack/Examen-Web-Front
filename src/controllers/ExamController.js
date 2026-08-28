@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ExamenxamModel } from '../models/Examen';
+import { ExamenModel } from '../models/Examen';
 
-export const ExamenController = () => {
+export const ExamenM = () => {
   const [exams, setExams] = useState([]);
   const [currentExam, setCurrentExam] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ export const ExamenController = () => {
   const fetchExams = async () => {
     setLoading(true);
     try {
-      const res = await ExamModel.getAll();
+      const res = await ExamenModel.getAll();
       setExams(res.data);
     } catch (err) {
       console.error(err);
@@ -21,7 +21,7 @@ export const ExamenController = () => {
   const fetchExamById = async (id) => {
     setLoading(true);
     try {
-      const res = await ExamenxamModel.getById(id);
+      const res = await ExamenModel.getById(id);
       setCurrentExam(res.data);
     } catch (err) {
       console.error(err);
@@ -32,7 +32,7 @@ export const ExamenController = () => {
 
   const createExam = async (examData) => {
     try {
-      await ExamModel.create(examData);
+      await ExamenModel.create(examData);
       await fetchExams();
       return true;
     } catch (err) {

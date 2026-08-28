@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useExam } from '../../../controllers/useExam';
-import { useCourse } from '../../../controllers/useCourse';
+import { ExamenModel } from '../../controllers/ExamController';
+import { CourseModel } from '../../controllers/CoursController';
 
 export default function GererExamen() {
-  const { exams, createExam } = useExam();
-  const { courses } = useCourse();
+  const { exams, createExam } = ExamenModel();
+  const { courses } = CourseModel();
   const [title, setTitle] = useState('');
   const [duration, setDuration] = useState(60);
   const [courseId, setCourseId] = useState('');

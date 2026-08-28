@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SubmissionModel } from '../models/submissionModel';
 
-export const SubmissionController = () => {
+export const SubmissionModel = () => {
   const [submitting, setSubmitting] = useState(false);
   const [results, setResults] = useState([]);
   const [loadingResults, setLoadingResults] = useState(false);

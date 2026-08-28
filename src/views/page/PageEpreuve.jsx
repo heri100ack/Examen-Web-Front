@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useExam } from '../../../controllers/useExam';
-import { useSubmission } from '../../../controllers/useSubmission';
+import { useExam } from '../../controllers/ExamController';
+import { useSubmission } from '../../controllers/StudentController';
 
 export default function PageEpreuve() {
   const { id } = useParams();
