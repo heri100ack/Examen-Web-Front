@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useCours } from '../../services/coursService';
 
 export default function GererCours() {

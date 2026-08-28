@@ -1,8 +1,8 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthService } from './service/authService';
 import PrincipaleBar from './views/components/PrincipaleBar';
+import ProtectedRoute from './views/components/ProtectedRoute';
 
 import Login from './views/page/Login';
 import PageAdmin from './views/page/PageAdmin';
@@ -12,16 +12,6 @@ import PageResultataStudent from './views/page/PageResultataStudent';
 import GererCours from './views/page/GererCours';
 import GererExamen from './views/page/GererExamen';
 import PageErreur from './views/page/PageErreur';
-
-const ProtectedRoute = ({ user, role, children }) => {
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-  if (role && user.role !== role) {
-    return <Navigate to={user.role === 'admin' ? '/admin' : '/student'} replace />;
-  }
-  return children;
-};
 
 export default function App() {
   const { user, login, logout, error } = AuthService();
