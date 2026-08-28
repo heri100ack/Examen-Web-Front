@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthService } from './service/authService';
-import Navbar from './views/components/Navbar';
 import PrincipaleBar from './views/components/PrincipaleBar';
 
 import Login from './views/page/Login';
@@ -13,6 +12,16 @@ import PageResultataStudent from './views/page/PageResultataStudent';
 import GererCours from './views/page/GererCours';
 import GererExamen from './views/page/GererExamen';
 import PageErreur from './views/page/PageErreur';
+
+const ProtectedRoute = ({ user, role, children }) => {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  if (role && user.role !== role) {
+    return <Navigate to={user.role === 'admin' ? '/admin' : '/student'} replace />;
+  }
+  return children;
+};
 
 export default function App() {
   const { user, login, logout, error } = AuthService();
@@ -44,7 +53,7 @@ export default function App() {
 
           <main className="container-fluid p-4 flex-grow-1">
             <Routes>
-              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Navigate to={user.role === 'admin' ? '/admin' : '/student'} replace />} />
 
                 {/* Espace admin protégé */}
                 <Route path="/admin" element={<ProtectedRoute role="admin"><PageAdmin /></ProtectedRoute>} />
