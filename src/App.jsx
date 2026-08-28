@@ -1,8 +1,8 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { AuthService } from './service/authService';
 import PrincipaleBar from './views/components/PrincipaleBar';
+import ProtectedRoute from './views/components/ProtectedRoute';
 
 import Login from './views/page/Login';
 import PageAdmin from './views/page/PageAdmin';
