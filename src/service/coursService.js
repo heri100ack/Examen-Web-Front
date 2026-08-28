@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import axiosClient from '../api/axiosClient';
 
 const coursApi = {
-  getAll: () => axiosClient.get('/cours'),
+  getAll: () => axiosClient.get('/courses'),
   getById: (id) => axiosClient.get(`/courses/${id}`),
-  create: (data) => axiosClient.post('/cours', data),
-  delete: (id) => axiosClient.delete(`/cours/${id}`),
+  create: (data) => axiosClient.post('/courses', data),
+  delete: (id) => axiosClient.delete(`/courses/${id}`),
 };
 
 export const useCours = () => {
