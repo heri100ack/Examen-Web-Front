@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AuthModel } from '../models/AuthModel';
 
-export const useAuth = () => {
+export const AuthController = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
   const [error, setError] = useState(null);
 
