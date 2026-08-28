@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSubmissionService } from '../../service/submissionService';
 
 export default function PageResultatStudent() {

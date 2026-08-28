@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useStudent } from '../../services/studentService';
 import { useExamen } from '../../services/examenService';
 import { useCours } from '../../services/coursService';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useExamen } from '../../services/examenService';
 import { useCours } from '../../services/coursService';
 
