@@ -46,9 +46,19 @@ export const useCours = () => {
     }
   };
 
+  const getCourseById = async (id) => {
+    try {
+      const res = await coursApi.getById(id);
+      return res.data;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  };
+
   useEffect(() => {
     fetchCourses();
   }, []);
 
-  return { courses, loading, createCourse, deleteCourse, refetch: fetchCourses };
+  return { courses, loading, createCourse, deleteCourse, getCourseById, refetch: fetchCourses };
 };
