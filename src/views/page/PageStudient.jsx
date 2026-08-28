@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ExamenModel } from '../../controllers/ExamController';
+import { useExamen } from '../../services/examenService';
 
 export default function PageStudient() {
-  const { exams, loading } = ExamenModel();
+  const { exams, loading} = useExamen();
   const navigate = useNavigate();
 
   return (

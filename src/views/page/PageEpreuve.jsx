@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useExam } from '../../controllers/ExamController';
-import { useSubmission } from '../../controllers/StudentController';
+import { useExamen } from '../../services/examenService';
+
 
 export default function PageEpreuve() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { currentExam, fetchExamById, loading } = useExam();
+  const { currentExam, loading, fetchExamById } = useExamen();
   const { submitExam, submitting } = useSubmission();
   const [answers, setAnswers] = useState({});
 

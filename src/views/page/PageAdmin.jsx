@@ -1,12 +1,13 @@
 import React from 'react';
-import { StudentModel } from '../../controllers/StudentController';
-import { ExamenModel } from '../../controllers/ExamController';
-import { CoursModel } from '../../controllers/CoursController';
+
+import { useStudent } from '../../services/studentService';
+import { useExamen } from '../../services/examenService';
+import { useCours } from '../../services/coursService';
 
 export default function PageAdmin() {
-  const { students } = StudentModel();
-  const { exams } = ExamenModel();
-  const { courses } = CoursModel();
+  const { students } = useStudent();
+  const { exams } = useExamen();
+  const { courses } = useCours();
 
   return (
     <div className="container-fluid p-4">
